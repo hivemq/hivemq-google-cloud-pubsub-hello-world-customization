@@ -12,8 +12,14 @@ image:https://img.shields.io/github/license/hivemq/hivemq-gcp-pubsub-hello-world
 
 == Purpose
 
-This Hello World customization uses an mqtt-to-pubsub transformer which forwards MQTT publish messages to GCP PubSub.
-It maps the MQTT topic structure to a matching GCP PubSub topic structure and preserves the MQTT topic and qos as pubsub message attributes.
+This Hello World customization uses two transformers.
+
+- One mqtt-to-pubsub transformer which forwards MQTT publish messages to GCP PubSub.
+It reads the GCP PubSub topic from the custom settings of the config xml file and preserves the MQTT topic,
+retained flag, qos, and user properties as PubSub message attributes.
+- One pubsub-to-mqtt transformer which forwards PubSub messages to HiveMQ.
+It reads the qos from the custom settings of the config xml file, uses "mqtt/topic" as MQTT topic, and preserves
+every PubSub attribute as MQTT user properties.
 
 We strongly recommend reading the {hivemq-gcp-pubsub-docs}[HiveMQ Enterprise Extension for GCP PubSub Documentation]
 to grasp the core concepts of HiveMQ GCP PubSub customization development.
@@ -23,17 +29,29 @@ to grasp the core concepts of HiveMQ GCP PubSub customization development.
 . Clone this repository into a Java 11 gradle project.
 . Run `./gradlew jar` task from gradle to build the customization.
 . Move the file: "build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0.jar" to the directory: "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations"
-. Copy the resources/hivemq-gcp-pubsub-configuration.xml to "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension" and adapt it to your environment.
-. Delete the "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/DISABLED" file.
+. Copy the resources/gcp-pubsub-configuration.xml to "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension".
+. Adapt the configuration to your environment.
+    - Set the <project-id> in the <pubsub-connection> tag to you GCP PubSub project.
+    - Set the <file-path> in the <service-account-key> tag to the absolute path of your service-account-key.json file.
+    - Set the <pubsub-subscription> name in the <pubsub-to-mqtt-transformer> to the correct GCP PubSub subscription.
+    - Set the <value> of <custom-setting> with <name> 'pubsub-topic' in the <mqtt-to-pubsub-transformer> to the correct GCP PubSub topic.
+. Delete the "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/DISABLED" file (if there is one).
 . Start HiveMQ.
 
 == First Steps
 
-=== Manual Testing
+=== MQTT 2 PubSub Manual Testing
 
-Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
-Publish a MQTT message to the topic _transform/customization_.
-Monitor your GCP PubSub project for a message from topic _transform-customization_.
+- Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
+- Publish an MQTT message to the topic _topic/test_.
+- Monitor your configured topic in your GCP PubSub project for a received message. (Hint: Pubsub topics either need subscriptions or message retention duration, that messages will be stored)
+
+=== PubSub 2 MQTT Manual Testing
+
+- Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
+- Subscribe to the topic "mqtt/topic".
+- Publish a PubSub message to the PubSub topic of your configured PubSub subscription.
+- Receive an MQTT message with your client.
 
 == Next Steps
 
