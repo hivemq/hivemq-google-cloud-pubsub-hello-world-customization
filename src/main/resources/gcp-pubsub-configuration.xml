@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+    Copyright 2022-present HiveMQ GmbH
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<hivemq-gcp-pubsub-extension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:noNamespaceSchemaLocation="gcp-pubsub-configuration.xsd">
+
+    <pubsub-connections>
+        <pubsub-connection>
+            <id>connection-01</id>
+            <project-id>my-test-project</project-id>
+            <authentication>
+                <service-account-key>
+                    <file-path>/path/to/my/service-account-key.json</file-path>
+                </service-account-key>
+            </authentication>
+        </pubsub-connection>
+    </pubsub-connections>
+
+    <pubsub-to-mqtt-transformers>
+        <pubsub-to-mqtt-transformer>
+            <id>pubsub-to-mqtt-hello-world-transformer</id>
+            <pubsub-connection>connection-01</pubsub-connection>
+            <pubsub-subscriptions>
+                <pubsub-subscription>
+                    <name>my-pubsub-subscription</name>
+                </pubsub-subscription>
+            </pubsub-subscriptions>
+            <custom-settings>
+                <custom-setting>
+                    <name>qos</name>
+                    <value>2</value>
+                </custom-setting>
+            </custom-settings>
+            <transformer>com.hivemq.extensions.gcp.pubsub.customizations.helloworld.PubSubToMqttHelloWorldTransformer</transformer>
+        </pubsub-to-mqtt-transformer>
+    </pubsub-to-mqtt-transformers>
+
+    <mqtt-to-pubsub-transformers>
+        <mqtt-to-pubsub-transformer>
+            <id>mqtt-to-pubsub-hello-world-transformer</id>
+            <pubsub-connection>connection-01</pubsub-connection>
+            <mqtt-topic-filters>
+                <mqtt-topic-filter>topic/#</mqtt-topic-filter>
+            </mqtt-topic-filters>
+            <custom-settings>
+                <custom-setting>
+                    <name>pubsub-topic</name>
+                    <value>my-pubsub-topic</value>
+                </custom-setting>
+            </custom-settings>
+            <transformer>com.hivemq.extensions.gcp.pubsub.customizations.helloworld.MqttToPubSubHelloWorldTransformer</transformer>
+        </mqtt-to-pubsub-transformer>
+    </mqtt-to-pubsub-transformers>
+
+</hivemq-gcp-pubsub-extension>

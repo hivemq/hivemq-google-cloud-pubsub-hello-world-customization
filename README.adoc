@@ -1,0 +1,52 @@
+:hivemq-link: https://www.hivemq.com
+:hivemq-gcp-pubsub-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub.html
+:hivemq-gcp-pubsub-customization-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub-customization.html
+:hivemq-blog-tools: {hivemq-link}/mqtt-toolbox/
+:hivemq-support: https://community.hivemq.com/c/hivemq-extension-sdk/gcp-pubsub-customization/14
+
+= HiveMQ GCP PubSub Extension Hello World Customization
+
+image:https://img.shields.io/badge/Customization_Type-Demonstration-orange?style=for-the-badge[Extension Type]
+image:https://img.shields.io/github/v/release/hivemq/hivemq-gcp-pubsub-hello-world-customization?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-gcp-pubsub-hello-world-customization/releases/latest]
+image:https://img.shields.io/github/license/hivemq/hivemq-gcp-pubsub-hello-world-customization?style=for-the-badge&color=brightgreen[GitHub,link=LICENSE]
+
+== Purpose
+
+This Hello World customization uses an mqtt-to-pubsub transformer which forwards MQTT publish messages to GCP PubSub.
+It maps the MQTT topic structure to a matching GCP PubSub topic structure and preserves the MQTT topic and qos as pubsub message attributes.
+
+We strongly recommend reading the {hivemq-gcp-pubsub-docs}[HiveMQ Enterprise Extension for GCP PubSub Documentation]
+to grasp the core concepts of HiveMQ GCP PubSub customization development.
+
+== Installation
+
+. Clone this repository into a Java 11 gradle project.
+. Run `./gradlew jar` task from gradle to build the customization.
+. Move the file: "build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0.jar" to the directory: "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations"
+. Copy the resources/hivemq-gcp-pubsub-configuration.xml to "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension" and adapt it to your environment.
+. Delete the "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/DISABLED" file.
+. Start HiveMQ.
+
+== First Steps
+
+=== Manual Testing
+
+Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
+Publish a MQTT message to the topic _transform/customization_.
+Monitor your GCP PubSub project for a message from topic _transform-customization_.
+
+== Next Steps
+
+Awesome, you got your first HiveMQ GCP PubSub customization working.
+
+Now read the {hivemq-gcp-pubsub-customization-docs}[HiveMQ GCP PubSub Extension Customization Documentation] to see what customizations can do.
+
+== Need Help?
+
+If you encounter any problems, we are happy to help.
+The best place to get in contact is our {hivemq-support}[community forum].
+
+== License
+
+HiveMQ GCP PubSub Extension Hello World Customization is licensed under the `APACHE LICENSE, VERSION 2.0`.
+A copy of the license can be found link:LICENSE[here].
