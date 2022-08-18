@@ -22,11 +22,11 @@
     <pubsub-connections>
         <pubsub-connection>
             <id>connection-01</id>
-            <project-id>my-test-project</project-id>
+            <gcp-project-id>my-test-project</gcp-project-id>
             <authentication>
-                <service-account-key>
-                    <file-path>/path/to/my/service-account-key.json</file-path>
-                </service-account-key>
+                <service-account>
+                    <file-path>/path/to/my/service-account.json</file-path>
+                </service-account>
             </authentication>
         </pubsub-connection>
     </pubsub-connections>

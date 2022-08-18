@@ -31,7 +31,7 @@ to grasp the core concepts of HiveMQ GCP PubSub customization development.
 . Move the file: "build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0.jar" to the directory: "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations"
 . Copy the resources/gcp-pubsub-configuration.xml to "HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension".
 . Adapt the configuration to your environment.
-    - Set the <project-id> in the <pubsub-connection> tag to you GCP PubSub project.
+    - Set the <gcp-project-id> in the <pubsub-connection> tag to your GCP PubSub project.
     - Set the <file-path> in the <service-account-key> tag to the absolute path of your service-account-key.json file.
     - Set the <pubsub-subscription> name in the <pubsub-to-mqtt-transformer> to the correct GCP PubSub subscription.
     - Set the <value> of <custom-setting> with <name> 'pubsub-topic' in the <mqtt-to-pubsub-transformer> to the correct GCP PubSub topic.
