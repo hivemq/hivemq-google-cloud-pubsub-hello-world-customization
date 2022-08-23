@@ -1,26 +1,20 @@
 package com.hivemq.extensions.gcp.pubsub.customizations.helloworld;
 
 import com.codahale.metrics.MetricRegistry;
-import com.hivemq.extension.sdk.api.annotations.Immutable;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.packets.general.Qos;
 import com.hivemq.extension.sdk.api.services.builder.PublishBuilder;
 import com.hivemq.extension.sdk.api.services.publish.Publish;
 import com.hivemq.extensions.gcp.pubsub.api.model.InboundPubSubMessage;
-import com.hivemq.extensions.gcp.pubsub.api.model.Timestamp;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInitInput;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttInitInput;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttInput;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttOutput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.nio.ByteBuffer;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -29,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
+ * @author Florian Limpöck
  * @since 4.9.0
  */
 class PubSubToMqttHelloWorldTransformerTest {

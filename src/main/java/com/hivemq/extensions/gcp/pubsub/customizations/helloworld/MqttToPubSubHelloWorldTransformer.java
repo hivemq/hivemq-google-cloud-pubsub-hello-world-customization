@@ -91,7 +91,7 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
             }
 
             final List<OutboundPubSubMessage> outboundPubSubMessages = new ArrayList<>();
-            for (String pubSubTopic : pubSubTopics) {
+            for (final String pubSubTopic : pubSubTopics) {
                 try {
                     final OutboundPubSubMessageBuilder builder = mqttToPubSubOutput.newOutboundPubSubMessageBuilder();
                     builder.topicName(pubSubTopic);

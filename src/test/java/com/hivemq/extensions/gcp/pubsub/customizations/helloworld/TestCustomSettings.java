@@ -9,6 +9,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * @author Florian Limpöck
+ * @since 4.9.0
+ */
 class TestCustomSettings implements CustomSettings {
 
     final @NotNull List<TestCustomSetting> customSettings;
@@ -18,7 +22,7 @@ class TestCustomSettings implements CustomSettings {
     }
 
     @Override
-    public @NotNull Optional<String> getFirst(@NotNull String name) {
+    public @NotNull Optional<String> getFirst(final @NotNull String name) {
         return customSettings.stream()
                 .filter(c -> c.name.equals(name))
                 .findFirst()
@@ -26,7 +30,7 @@ class TestCustomSettings implements CustomSettings {
     }
 
     @Override
-    public @NotNull List<@NotNull String> getAllForName(@NotNull String name) {
+    public @NotNull List<@NotNull String> getAllForName(final @NotNull String name) {
         return customSettings.stream()
                 .filter(c -> c.name.equals(name))
                 .map(TestCustomSetting::getValue)

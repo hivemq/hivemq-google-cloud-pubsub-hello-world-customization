@@ -52,8 +52,8 @@ import java.util.Optional;
  * <p>
  * An example gcp-pubsub-configuration.xml enabling this transformer is provided in {@code src/main/resources}.
  *
- * @since 4.9.0
  * @author Florian Limpöck
+ * @since 4.9.0
  */
 public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransformer {
 
@@ -96,7 +96,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
                     try {
                         final int qosAsInt = Integer.parseInt(qosAsString);
                         publishBuilder.qos(Qos.valueOf(qosAsInt));
-                    } catch (IllegalArgumentException e) {
+                    } catch (final IllegalArgumentException e) {
                         LOG.debug("Could not parse qos from custom settings. Using default qos 0. ", e);
                         publishBuilder.qos(Qos.AT_MOST_ONCE);
                     }
@@ -108,7 +108,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
             pubSubMessage.getAttributes().forEach(publishBuilder::userProperty);
             pubSubToMqttOutput.setPublishes(List.of(publishBuilder.build()));
 
-        } catch (Exception e) {
+        } catch (final Exception e) {
             LOG.error("GCP PubSub to MQTT transformation failed: ", e);
         }
     }

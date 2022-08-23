@@ -21,10 +21,7 @@ import com.hivemq.extension.sdk.api.packets.general.Qos;
 import com.hivemq.extension.sdk.api.packets.general.UserProperties;
 import com.hivemq.extension.sdk.api.packets.publish.PublishPacket;
 import com.hivemq.extensions.gcp.pubsub.api.builders.OutboundPubSubMessageBuilder;
-import com.hivemq.extensions.gcp.pubsub.api.model.CustomSetting;
-import com.hivemq.extensions.gcp.pubsub.api.model.CustomSettings;
 import com.hivemq.extensions.gcp.pubsub.api.model.OutboundPubSubMessage;
-import com.hivemq.extensions.gcp.pubsub.api.model.PubSubConnection;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInitInput;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInput;
 import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubOutput;
@@ -37,15 +34,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
 /**
- * @since 4.9.0
  * @author Florian Limpöck
+ * @since 4.9.0
  */
 class MqttToPubSubHelloWorldTransformerTest {
 
@@ -90,7 +86,7 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(input.getPublishPacket()).thenReturn(publishPacket);
         final AtomicReference<List<OutboundPubSubMessage>> reference = new AtomicReference<>();
         doAnswer((Answer<Void>) invocation -> {
-            List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
+            final List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
             reference.set(outboundPubSubMessages);
             return null;
         }).when(output).setOutboundPubSubMessages(anyList());
@@ -136,7 +132,7 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(input.getPublishPacket()).thenReturn(publishPacket);
         final AtomicReference<List<OutboundPubSubMessage>> reference = new AtomicReference<>();
         doAnswer((Answer<Void>) invocation -> {
-            List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
+            final List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
             reference.set(outboundPubSubMessages);
             return null;
         }).when(output).setOutboundPubSubMessages(anyList());
@@ -175,7 +171,7 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(input.getPublishPacket()).thenReturn(publishPacket);
         final AtomicReference<List<OutboundPubSubMessage>> reference = new AtomicReference<>();
         doAnswer((Answer<Void>) invocation -> {
-            List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
+            final List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
             reference.set(outboundPubSubMessages);
             return null;
         }).when(output).setOutboundPubSubMessages(anyList());
@@ -218,7 +214,7 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(input.getPublishPacket()).thenReturn(publishPacket);
         final AtomicReference<List<OutboundPubSubMessage>> reference = new AtomicReference<>();
         doAnswer((Answer<Void>) invocation -> {
-            List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
+            final List<OutboundPubSubMessage> outboundPubSubMessages = invocation.getArgument(0);
             reference.set(outboundPubSubMessages);
             return null;
         }).when(output).setOutboundPubSubMessages(anyList());
@@ -235,12 +231,12 @@ class MqttToPubSubHelloWorldTransformerTest {
 
         @Override
         public @NotNull String getTopicName() {
-            return null;
+            return "";
         }
 
         @Override
         public @NotNull Map<String, String> getAttributes() {
-            return null;
+            return Map.of();
         }
 
         @Override
