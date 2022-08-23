@@ -35,22 +35,22 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * This example {@link PubSubToMqttTransformer} accepts a GCP PubSub message and tries to create a new MQTT PUBLISH from it.
+ * This example {@link PubSubToMqttTransformer} accepts a GCP Pub/Sub message and tries to create a new MQTT PUBLISH from it.
  * <p>
- * It performs the following computational steps:
+ * The example performs the following computational steps:
  * <ol>
- *     <li> Create a new MQTT publish consisting of: </li>
+ *     <li> Create a new MQTT publish message that contains the following information: </li>
  *         <ul>
- *             <li> The pubsub topic as MQTT topic. </li>
- *             <li> The qos from custom-settings config as MQTT qos </li>
- *             <li> The data as payload if present </li>
- *             <li> All present pubsub attributes as user properties. </li>
+ *             <li> The Pub/Sub topic as the MQTT topic. </li>
+ *             <li> The QoS from the custom settings configuration as the MQTT QoS </li>
+ *             <li> The data as payload, if present </li>
+ *             <li> All present Pub/Sub attributes as MQTT user properties. </li>
  *         </ul>
- *      <li> Increment a metric everytime a pubsub message has no data set. </li>
- *      <li> Provide the MQTT publish to the extension for publishing. </li>
+ *      <li> Increment a metric for every Pub/Sub message that has no data set. </li>
+ *      <li> Provide the MQTT publish message to the extension for publication. </li>
  * </ol>
  * <p>
- * An example gcp-pubsub-configuration.xml enabling this transformer is provided in {@code src/main/resources}.
+ * An example `gcp-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
  *
  * @author Florian Limpöck
  * @since 4.9.0

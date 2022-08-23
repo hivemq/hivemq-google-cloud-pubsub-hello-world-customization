@@ -35,23 +35,23 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This example {@link MqttToPubSubTransformer} accepts an MQTT PUBLISH and tries to create a new PubSub message from it.
+ * This example {@link MqttToPubSubTransformer} accepts an MQTT PUBLISH and tries to create a new Pub/Sub message from it.
  * <p>
- * It performs the following computational steps:
+ * The example performs the following computational steps:
  * <ol>
- *     <li> Read the pubsub topics from the custom settings </li>
- *     <li> Create a new PubSub message for each pubsub topic consisting of: </li>
+ *     <li> Read the Pub/Sub topics from the custom settings </li>
+ *     <li> Create a new Pub/Sub message for each Pub/Sub topic that contains the following information: </li>
  *         <ul>
  *             <li> The payload as data. </li>
- *             <li> The MQTT topic as pubsub attribute. </li>
- *             <li> The retained flag as pubsub attribute. </li>
- *             <li> The quality of service as pubsub attribute. </li>
- *             <li> All present user properties as pubsub attributes. </li>
+ *             <li> The MQTT topic as a Pub/Sub attribute. </li>
+ *             <li> The retained flag as a Pub/Sub attribute. </li>
+ *             <li> The quality of service as a Pub/Sub attribute. </li>
+ *             <li> All present user properties as Pub/Sub attributes. </li>
  *         </ul>
  *      <li> Provide the messages to the extension for publishing. </li>
  * </ol>
  * <p>
- * An example gcp-pubsub-configuration.xml enabling this transformer is provided in {@code src/main/resources}.
+ * An example `gcp-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
  *
  * @author Florian Limpöck
  * @since 4.9.0
@@ -104,7 +104,7 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
                     publishPacket.getPayload().ifPresent(builder::data);
                     outboundPubSubMessages.add(builder.build());
                 } catch (final Exception e) {
-                    LOG.error("Could not create a pubsub message from MQTT message with topic '{}' because", mqttTopic, e);
+                    LOG.error("Could not create a GCP PubSub message from MQTT message with topic '{}' because", mqttTopic, e);
                 }
             }
             mqttToPubSubOutput.setOutboundPubSubMessages(outboundPubSubMessages);
