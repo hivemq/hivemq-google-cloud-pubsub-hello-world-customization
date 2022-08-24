@@ -28,8 +28,8 @@ to grasp the core concepts of HiveMQ GCP Pub/Sub customization development.
 
 . Clone this repository into a Java 11 Gradle project.
 . Run the `./gradlew jar` task from Gradle to build the customization.
-. Move the `build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations` directory.
-. Copy the `resources/gcp-pubsub-configuration.xml` file to the `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension` folder.
+. Move the `build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0,rc-1.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations` directory.
+. Copy the `src/main/resources/gcp-pubsub-configuration.xml` file to the `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension` folder.
 . Adapt the configuration to your environment.
     - Set the `<gcp-project-id>` in the `<pubsub-connection>` tag to match your GCP Pub/Sub project ID.
     - Set the `<file-path>` in the `<service-account>` tag to the absolute or relative path of your `service-account-key.json` file.
