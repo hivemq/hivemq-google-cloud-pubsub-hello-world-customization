@@ -39,7 +39,7 @@ import java.util.List;
  * <p>
  * The example performs the following computational steps:
  * <ol>
- *     <li> Read the Pub/Sub topics from the custom settings </li>
+ *     <li> Read the Pub/Sub topics from the `destination` custom setting. </li>
  *     <li> Create a new Pub/Sub message for each Pub/Sub topic that contains the following information: </li>
  *         <ul>
  *             <li> The payload as data. </li>
@@ -85,7 +85,7 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
 
             final List<String> pubSubTopics;
             if (customSettings != null) {
-                pubSubTopics = customSettings.getAllForName("pubsub-topic");
+                pubSubTopics = customSettings.getAllForName("destination");
             } else {
                 pubSubTopics = Collections.emptyList();
             }

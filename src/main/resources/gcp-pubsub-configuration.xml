@@ -22,10 +22,10 @@
     <pubsub-connections>
         <pubsub-connection>
             <id>connection-01</id>
-            <gcp-project-id>my-test-project</gcp-project-id>
+            <gcp-project-id>{INSERT_YOUR_GCP_PROJECT_HERE}</gcp-project-id>
             <authentication>
                 <service-account>
-                    <file-path>/path/to/my/service-account.json</file-path>
+                    <file-path>{PATH_TO_YOUR_SERVICE_ACCOUNT_JSON_FILE}</file-path>
                 </service-account>
             </authentication>
         </pubsub-connection>
@@ -37,7 +37,7 @@
             <pubsub-connection>connection-01</pubsub-connection>
             <pubsub-subscriptions>
                 <pubsub-subscription>
-                    <name>my-pubsub-subscription</name>
+                    <name>{INSERT_YOUR_GCP_SUBSCRIPTION_HERE}</name>
                 </pubsub-subscription>
             </pubsub-subscriptions>
             <custom-settings>
@@ -59,8 +59,8 @@
             </mqtt-topic-filters>
             <custom-settings>
                 <custom-setting>
-                    <name>pubsub-topic</name>
-                    <value>my-pubsub-topic</value>
+                    <name>destination</name>
+                    <value>{INSERT_YOUR_GCP_TOPIC_HERE}</value>
                 </custom-setting>
             </custom-settings>
             <transformer>com.hivemq.extensions.gcp.pubsub.customizations.helloworld.MqttToPubSubHelloWorldTransformer</transformer>

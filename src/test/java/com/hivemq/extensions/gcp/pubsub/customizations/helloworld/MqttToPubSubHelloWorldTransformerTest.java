@@ -152,8 +152,8 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(initInput.getCustomSettings()).thenReturn(new TestCustomSettings(
                 List.of(
                         //we set pubsub-topic setting
-                        new TestCustomSetting("pubsub-topic", "topic-1"),
-                        new TestCustomSetting("pubsub-topic", "topic-2")
+                        new TestCustomSetting("destination", "topic-1"),
+                        new TestCustomSetting("destination", "topic-2")
                 )
         ));
 
@@ -193,8 +193,8 @@ class MqttToPubSubHelloWorldTransformerTest {
         when(initInput.getCustomSettings()).thenReturn(new TestCustomSettings(
                 List.of(
                         //we set pubsub-topic setting
-                        new TestCustomSetting("pubsub-topic", "topic-1"),
-                        new TestCustomSetting("pubsub-topic", "topic-2")
+                        new TestCustomSetting("destination", "topic-1"),
+                        new TestCustomSetting("destination", "topic-2")
                 )
         ));
 
