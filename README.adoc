@@ -2,7 +2,7 @@
 :hivemq-gcp-pubsub-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub.html
 :hivemq-gcp-pubsub-customization-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub-customization.html
 :hivemq-blog-tools: {hivemq-link}/mqtt-toolbox/
-:hivemq-support: https://community.hivemq.com/c/hivemq-extension-sdk/gcp-pubsub-customization/14
+:hivemq-support: https://community.hivemq.com
 
 = HiveMQ GCP PubSub Extension Hello World Customization
 
@@ -20,9 +20,6 @@ retained flag, QoS level, and user properties as Pub/Sub message attributes.
 - One `pubsub-to-mqtt` transformer that forwards Pub/Sub messages to HiveMQ.
 This transformer reads the QoS level from the custom settings of the `config.xml` file, uses the `mqtt/topic` as the MQTT topic, and preserves
 every Pub/Sub attribute as MQTT user properties.
-
-We strongly recommend reading the {hivemq-gcp-pubsub-docs}[HiveMQ Enterprise Extension for GCP Pub/Sub Documentation]
-to grasp the core concepts of HiveMQ GCP Pub/Sub customization development.
 
 == Installation
 
@@ -52,12 +49,6 @@ to grasp the core concepts of HiveMQ GCP Pub/Sub customization development.
 - Subscribe to the topic `mqtt/topic`.
 - Publish a Pub/Sub message to the Pub/Sub topic.
 - Verify that you receive an MQTT message with your client.
-
-== Next Steps
-
-Awesome, your first HiveMQ GCP Pub/Sub customization works.
-
-Now, read the {hivemq-gcp-pubsub-customization-docs}[HiveMQ GCP PubSub Extension Customization Documentation] to see what customizations can do.
 
 == Need Help?
 
