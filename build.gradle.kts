@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     implementation("com.hivemq:hivemq-gcp-pubsub-extension-customization-sdk:${property("hivemq-gcp-pubsub-sdk.version")}")
-    implementation("com.hivemq:hivemq-extension-sdk:4.8.3!!")
+    implementation("com.hivemq:hivemq-extension-sdk:${version}")
 }
 
 dependencies {
