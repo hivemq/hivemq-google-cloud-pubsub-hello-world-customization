@@ -1,21 +1,21 @@
 :hivemq-link: https://www.hivemq.com
-:hivemq-gcp-pubsub-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub.html
-:hivemq-gcp-pubsub-customization-docs: {hivemq-link}/docs/gcp-pubsub/latest/enterprise-extension-for-gcp-pubsub/gcp-pubsub-customization.html
+:hivemq-google-cloud-pubsub-docs: {hivemq-link}/docs/google-cloud-pubsub/latest/enterprise-extension-for-google-cloud-pubsub/google-cloud-pubsub.html
+:hivemq-google-cloud-pubsub-customization-docs: {hivemq-link}/docs/google-cloud-pubsub/latest/enterprise-extension-for-google-cloud-pubsub/google-cloud-pubsub-customization.html
 :hivemq-blog-tools: {hivemq-link}/mqtt-toolbox/
 :hivemq-support: https://community.hivemq.com
 
-= HiveMQ GCP PubSub Extension Hello World Customization
+= HiveMQ Google Cloud PubSub Extension Hello World Customization
 
 image:https://img.shields.io/badge/Customization_Type-Demonstration-orange?style=for-the-badge[Extension Type]
-image:https://img.shields.io/github/v/release/hivemq/hivemq-gcp-pubsub-hello-world-customization?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-gcp-pubsub-hello-world-customization/releases/latest]
-image:https://img.shields.io/github/license/hivemq/hivemq-gcp-pubsub-hello-world-customization?style=for-the-badge&color=brightgreen[GitHub,link=LICENSE]
+image:https://img.shields.io/github/v/release/hivemq/hivemq-google-cloud-pubsub-hello-world-customization?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-google-cloud-pubsub-hello-world-customization/releases/latest]
+image:https://img.shields.io/github/license/hivemq/hivemq-google-cloud-pubsub-hello-world-customization?style=for-the-badge&color=brightgreen[GitHub,link=LICENSE]
 
 == Purpose
 
 This Hello World customization uses two transformers.
 
-- One `mqtt-to-pubsub` transformer that forwards MQTT publish messages to GCP Pub/Sub.
-This transformer reads the GCP Pub/Sub topic from the custom settings of the `config.xml` file and preserves the MQTT topic,
+- One `mqtt-to-pubsub` transformer that forwards MQTT publish messages to Google Cloud Pub/Sub.
+This transformer reads the Google Cloud Pub/Sub topic from the custom settings of the `config.xml` file and preserves the MQTT topic,
 retained flag, QoS level, and user properties as Pub/Sub message attributes.
 - One `pubsub-to-mqtt` transformer that forwards Pub/Sub messages to HiveMQ.
 This transformer reads the QoS level from the custom settings of the `config.xml` file, uses the `mqtt/topic` as the MQTT topic, and preserves
@@ -25,14 +25,14 @@ every Pub/Sub attribute as MQTT user properties.
 
 . Clone this repository into a Java 11 Gradle project.
 . Run the `./gradlew jar` task from Gradle to build the customization.
-. Move the `build/libs/hivemq-gcp-pubsub-hello-world-customization-4.9.0-SNAPSHOT.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/customizations` directory.
-. Copy the `src/main/resources/gcp-pubsub-configuration.xml` file to the `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension` folder.
+. Move the `build/libs/hivemq-google-cloud-pubsub-hello-world-customization-4.9.0-SNAPSHOT.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension/customizations` directory.
+. Copy the `src/main/resources/google-cloud-pubsub-configuration.xml` file to the `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension` folder.
 . Adapt the configuration to your environment.
-    - Set the `<gcp-project-id>` in the `<pubsub-connection>` tag to match your GCP Pub/Sub project ID.
+    - Set the `<google-cloud-project-id>` in the `<pubsub-connection>` tag to match your Google Cloud Pub/Sub project ID.
     - Set the `<file-path>` in the `<service-account>` tag to the absolute or relative path of your `service-account-key.json` file.
-    - Set the `<pubsub-subscription>` name in the `<pubsub-to-mqtt-transformer>` tag to match the correct GCP Pub/Sub subscription.
-    - Set the `<value>` of the destination `<custom-setting>` in the `<mqtt-to-pubsub-transformer>` to the correct GCP PubSub topic.
-. Delete the `HIVEMQ_HOME/extensions/hivemq-gcp-pubsub-extension/DISABLED` file (if there is one).
+    - Set the `<pubsub-subscription>` name in the `<pubsub-to-mqtt-transformer>` tag to match the correct Google Cloud Pub/Sub subscription.
+    - Set the `<value>` of the destination `<custom-setting>` in the `<mqtt-to-pubsub-transformer>` to the correct Google Cloud Pub/Sub topic.
+. Delete the `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension/DISABLED` file (if there is one).
 . Start HiveMQ.
 
 == First Steps
@@ -41,7 +41,7 @@ every Pub/Sub attribute as MQTT user properties.
 
 - Connect with an {hivemq-blog-tools}[MQTT client] of your choice.
 - Publish an MQTT message to the topic `topic/test`.
-- Monitor the topic you configured in your GCP Pub/Sub project for a received message. (Hint: Pub/Sub topics must have subscriptions or a message retention duration set for messages to be stored)
+- Monitor the topic you configured in your Google Cloud Pub/Sub project for a received message. (Hint: Pub/Sub topics must have subscriptions or a message retention duration set for messages to be stored)
 
 === Manually Test Your Pub/Sub-to-MQTT Mapping
 
@@ -57,5 +57,5 @@ The best place to get in contact is our {hivemq-support}[community forum].
 
 == License
 
-HiveMQ GCP Pub/Sub Extension Hello World Customization is licensed under the `APACHE LICENSE, VERSION 2.0`.
+HiveMQ Google Cloud Pub/Sub Extension Hello World Customization is licensed under the `APACHE LICENSE, VERSION 2.0`.
 A copy of the license can be found link:LICENSE[here].

@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hivemq.extensions.gcp.pubsub.customizations.helloworld;
+
+package com.hivemq.extensions.google.cloud.pubsub.customizations.helloworld;
 
 import com.codahale.metrics.Counter;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.annotations.Nullable;
 import com.hivemq.extension.sdk.api.packets.general.Qos;
 import com.hivemq.extension.sdk.api.services.builder.PublishBuilder;
-import com.hivemq.extensions.gcp.pubsub.api.model.CustomSettings;
-import com.hivemq.extensions.gcp.pubsub.api.model.InboundPubSubMessage;
-import com.hivemq.extensions.gcp.pubsub.api.model.PubSubConnection;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttInitInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttOutput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.PubSubToMqttTransformer;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.CustomSettings;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.InboundPubSubMessage;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.PubSubConnection;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.PubSubToMqttInitInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.PubSubToMqttInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.PubSubToMqttOutput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.PubSubToMqttTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +36,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * This example {@link PubSubToMqttTransformer} accepts a GCP Pub/Sub message and tries to create a new MQTT PUBLISH from it.
+ * This example {@link PubSubToMqttTransformer} accepts a Google Cloud Pub/Sub message and tries to create a new MQTT PUBLISH from it.
  * <p>
  * The example performs the following computational steps:
  * <ol>
@@ -50,7 +51,7 @@ import java.util.Optional;
  *      <li> Provide the MQTT publish message to the extension for publication. </li>
  * </ol>
  * <p>
- * An example `gcp-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
+ * An example `google-cloud-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
  *
  * @author Florian Limpöck
  * @since 4.9.0
@@ -59,7 +60,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
 
     private static final @NotNull Logger LOG = LoggerFactory.getLogger(PubSubToMqttHelloWorldTransformer.class);
 
-    public static final @NotNull String MISSING_DATA_COUNTER_NAME = "com.hivemq.extensions.gcp-pubsub.customizations.pubsub-to-mqtt.transformer.missing-data.count";
+    public static final @NotNull String MISSING_DATA_COUNTER_NAME = "com.hivemq.extensions.google-cloud-pubsub.customizations.pubsub-to-mqtt.transformer.missing-data.count";
 
     private @Nullable Counter missingValueCounter;
     @Nullable CustomSettings customSettings;
@@ -76,7 +77,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
                     pubSubConnection.getId(),
                     pubSubConnection.getProjectId());
         } catch (final Exception e) {
-            LOG.error("GCP PubSub to MQTT transformer initialisation failed: ", e);
+            LOG.error("Google Cloud PubSub to MQTT transformer initialisation failed: ", e);
         }
     }
 
@@ -109,7 +110,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
             pubSubToMqttOutput.setPublishes(List.of(publishBuilder.build()));
 
         } catch (final Exception e) {
-            LOG.error("GCP PubSub to MQTT transformation failed: ", e);
+            LOG.error("Google Cloud PubSub to MQTT transformation failed: ", e);
         }
     }
 }

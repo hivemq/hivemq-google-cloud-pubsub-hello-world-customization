@@ -1,4 +1,4 @@
-rootProject.name = "hivemq-gcp-pubsub-hello-world-customization"
+rootProject.name = "hivemq-google-cloud-pubsub-hello-world-customization"
 
 pluginManagement {
     plugins {
@@ -7,6 +7,6 @@ pluginManagement {
     }
 }
 
-if (file("../hivemq-gcp-pubsub-extension-customization-sdk").exists()) {
-    includeBuild("../hivemq-gcp-pubsub-extension-customization-sdk")
+if (file("../hivemq-google-cloud-pubsub-extension-customization-sdk").exists()) {
+    includeBuild("../hivemq-google-cloud-pubsub-extension-customization-sdk")
 }

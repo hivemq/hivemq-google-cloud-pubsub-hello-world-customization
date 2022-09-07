@@ -16,13 +16,13 @@
     limitations under the License.
 
 -->
-<hivemq-gcp-pubsub-extension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                             xsi:noNamespaceSchemaLocation="gcp-pubsub-configuration.xsd">
+<hivemq-google-cloud-pubsub-extension xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                             xsi:noNamespaceSchemaLocation="google-cloud-pubsub-configuration.xsd">
 
     <pubsub-connections>
         <pubsub-connection>
             <id>connection-01</id>
-            <gcp-project-id>{INSERT_YOUR_GCP_PROJECT_HERE}</gcp-project-id>
+            <google-cloud-project-id>{INSERT_YOUR_GOOGLE_CLOUD_PROJECT_HERE}</google-cloud-project-id>
             <authentication>
                 <service-account>
                     <file-path>{PATH_TO_YOUR_SERVICE_ACCOUNT_JSON_FILE}</file-path>
@@ -37,7 +37,7 @@
             <pubsub-connection>connection-01</pubsub-connection>
             <pubsub-subscriptions>
                 <pubsub-subscription>
-                    <name>{INSERT_YOUR_GCP_SUBSCRIPTION_HERE}</name>
+                    <name>{INSERT_YOUR_GOOGLE_CLOUD_SUBSCRIPTION_HERE}</name>
                 </pubsub-subscription>
             </pubsub-subscriptions>
             <custom-settings>
@@ -46,7 +46,7 @@
                     <value>2</value>
                 </custom-setting>
             </custom-settings>
-            <transformer>com.hivemq.extensions.gcp.pubsub.customizations.helloworld.PubSubToMqttHelloWorldTransformer</transformer>
+            <transformer>com.hivemq.extensions.google.cloud.pubsub.customizations.helloworld.PubSubToMqttHelloWorldTransformer</transformer>
         </pubsub-to-mqtt-transformer>
     </pubsub-to-mqtt-transformers>
 
@@ -60,11 +60,11 @@
             <custom-settings>
                 <custom-setting>
                     <name>destination</name>
-                    <value>{INSERT_YOUR_GCP_TOPIC_HERE}</value>
+                    <value>{INSERT_YOUR_GOOGLE_CLOUD_TOPIC_HERE}</value>
                 </custom-setting>
             </custom-settings>
-            <transformer>com.hivemq.extensions.gcp.pubsub.customizations.helloworld.MqttToPubSubHelloWorldTransformer</transformer>
+            <transformer>com.hivemq.extensions.google.cloud.pubsub.customizations.helloworld.MqttToPubSubHelloWorldTransformer</transformer>
         </mqtt-to-pubsub-transformer>
     </mqtt-to-pubsub-transformers>
 
-</hivemq-gcp-pubsub-extension>
+</hivemq-google-cloud-pubsub-extension>

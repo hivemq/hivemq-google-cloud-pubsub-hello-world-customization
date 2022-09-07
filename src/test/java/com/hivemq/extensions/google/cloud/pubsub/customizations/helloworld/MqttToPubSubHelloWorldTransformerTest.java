@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hivemq.extensions.gcp.pubsub.customizations.helloworld;
+package com.hivemq.extensions.google.cloud.pubsub.customizations.helloworld;
 
 import com.hivemq.extension.sdk.api.annotations.Immutable;
 import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.packets.general.Qos;
 import com.hivemq.extension.sdk.api.packets.general.UserProperties;
 import com.hivemq.extension.sdk.api.packets.publish.PublishPacket;
-import com.hivemq.extensions.gcp.pubsub.api.builders.OutboundPubSubMessageBuilder;
-import com.hivemq.extensions.gcp.pubsub.api.model.OutboundPubSubMessage;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInitInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubOutput;
+import com.hivemq.extensions.google.cloud.pubsub.api.builders.OutboundPubSubMessageBuilder;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.OutboundPubSubMessage;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubInitInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubOutput;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.stubbing.Answer;
