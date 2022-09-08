@@ -4,8 +4,8 @@ plugins {
     id("com.github.sgtsilvio.gradle.utf8")
 }
 
-group = "com.hivemq.extensions.gcp.pubsub.customizations"
-description = "Hello World Customization for the HiveMQ Enterprise Extensions for GCP PubSub"
+group = "com.hivemq.extensions.google.cloud.pubsub.customizations"
+description = "Hello World Customization for the HiveMQ Enterprise Extensions for Google Cloud Pub/Sub"
 
 java {
     toolchain {
@@ -18,8 +18,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.hivemq:hivemq-gcp-pubsub-extension-customization-sdk:${property("hivemq-gcp-pubsub-sdk.version")}")
-    implementation("com.hivemq:hivemq-extension-sdk:4.8.3!!")
+    implementation("com.hivemq:hivemq-google-cloud-pubsub-extension-customization-sdk:${property("hivemq-google-cloud-pubsub-sdk.version")}")
+    implementation("com.hivemq:hivemq-extension-sdk:${version}")
 }
 
 dependencies {

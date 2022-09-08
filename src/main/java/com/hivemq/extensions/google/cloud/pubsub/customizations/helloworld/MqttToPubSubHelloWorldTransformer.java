@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-package com.hivemq.extensions.gcp.pubsub.customizations.helloworld;
+package com.hivemq.extensions.google.cloud.pubsub.customizations.helloworld;
 
 import com.hivemq.extension.sdk.api.annotations.NotNull;
 import com.hivemq.extension.sdk.api.annotations.Nullable;
 import com.hivemq.extension.sdk.api.packets.publish.PublishPacket;
-import com.hivemq.extensions.gcp.pubsub.api.builders.OutboundPubSubMessageBuilder;
-import com.hivemq.extensions.gcp.pubsub.api.model.CustomSettings;
-import com.hivemq.extensions.gcp.pubsub.api.model.OutboundPubSubMessage;
-import com.hivemq.extensions.gcp.pubsub.api.model.PubSubConnection;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInitInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubInput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubOutput;
-import com.hivemq.extensions.gcp.pubsub.api.transformers.MqttToPubSubTransformer;
+import com.hivemq.extensions.google.cloud.pubsub.api.builders.OutboundPubSubMessageBuilder;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.CustomSettings;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.OutboundPubSubMessage;
+import com.hivemq.extensions.google.cloud.pubsub.api.model.PubSubConnection;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubInitInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubInput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubOutput;
+import com.hivemq.extensions.google.cloud.pubsub.api.transformers.MqttToPubSubTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +51,7 @@ import java.util.List;
  *      <li> Provide the messages to the extension for publishing. </li>
  * </ol>
  * <p>
- * An example `gcp-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
+ * An example `google-cloud-pubsub-configuration.xml` file that enables this transformer is provided in `{@code src/main/resources}`.
  *
  * @author Florian Limpöck
  * @since 4.9.0
@@ -71,7 +71,7 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
                     pubSubConnection.getId(),
                     pubSubConnection.getProjectId());
         } catch (final Exception e) {
-            LOG.error("MQTT to GCP PubSub transformer initialisation failed: ", e);
+            LOG.error("MQTT to Google Cloud Pub/Sub transformer initialisation failed: ", e);
         }
     }
 
@@ -104,12 +104,12 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
                     publishPacket.getPayload().ifPresent(builder::data);
                     outboundPubSubMessages.add(builder.build());
                 } catch (final Exception e) {
-                    LOG.error("Could not create a GCP PubSub message from MQTT message with topic '{}' because", mqttTopic, e);
+                    LOG.error("Could not create a Google Cloud Pub/Sub message from MQTT message with topic '{}' because", mqttTopic, e);
                 }
             }
             mqttToPubSubOutput.setOutboundPubSubMessages(outboundPubSubMessages);
         } catch (final Exception e) {
-            LOG.error("MQTT to GCP PubSub transformation failed: ", e);
+            LOG.error("MQTT to Google Cloud Pub/Sub transformation failed: ", e);
         }
     }
 }
