@@ -31,6 +31,7 @@ import com.hivemq.extensions.google.cloud.pubsub.api.transformers.PubSubToMqttTr
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.ByteBuffer;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -105,7 +106,11 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
             }
 
             pubSubMessage.getData()
-                    .ifPresentOrElse(publishBuilder::payload, Objects.requireNonNull(missingValueCounter)::inc);
+                    .ifPresentOrElse(publishBuilder::payload, () -> {
+                        //the publishBuilder requires at least an empty payload.
+                        publishBuilder.payload(ByteBuffer.wrap(new byte[0]));
+                        Objects.requireNonNull(missingValueCounter).inc();
+                    });
             pubSubMessage.getAttributes().forEach(publishBuilder::userProperty);
             pubSubToMqttOutput.setPublishes(List.of(publishBuilder.build()));
 
