@@ -25,14 +25,12 @@ import com.hivemq.extensions.google.cloud.pubsub.api.model.PubSubConnection;
 class TestPubSubConnection implements PubSubConnection {
 
     @Override
-    public @NotNull
-    String getId() {
+    public @NotNull String getId() {
         return "my-connection";
     }
 
     @Override
-    public @NotNull
-    String getProjectId() {
+    public @NotNull String getProjectId() {
         return "my-project";
     }
 }

@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.hivemq.extensions.google.cloud.pubsub.customizations"
-description = "Hello World Customization for the HiveMQ Enterprise Extensions for Google Cloud PubSub"
+description = "Hello World Customization for the HiveMQ Enterprise Extensions for Google Cloud Pub/Sub"
 
 java {
     toolchain {

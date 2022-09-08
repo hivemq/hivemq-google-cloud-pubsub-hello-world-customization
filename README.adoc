@@ -4,7 +4,7 @@
 :hivemq-blog-tools: {hivemq-link}/mqtt-toolbox/
 :hivemq-support: https://community.hivemq.com
 
-= HiveMQ Google Cloud PubSub Extension Hello World Customization
+= HiveMQ Google Cloud Pub/Sub Extension Hello World Customization
 
 image:https://img.shields.io/badge/Customization_Type-Demonstration-orange?style=for-the-badge[Extension Type]
 image:https://img.shields.io/github/v/release/hivemq/hivemq-google-cloud-pubsub-hello-world-customization?style=for-the-badge[GitHub release (latest by date),link=https://github.com/hivemq/hivemq-google-cloud-pubsub-hello-world-customization/releases/latest]
