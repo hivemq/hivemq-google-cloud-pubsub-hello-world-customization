@@ -72,7 +72,7 @@ class MqttToPubSubHelloWorldTransformerTest {
     void initTransformer_initFailed_noException() {
         final MqttToPubSubInitInput initInput = mock(MqttToPubSubInitInput.class);
         when(initInput.getPubSubConnection()).thenReturn(new TestPubSubConnection());
-        when(initInput.getCustomSettings()).thenThrow(new RuntimeException("TEST_FAILED"));
+        when(initInput.getCustomSettings()).thenThrow(new RuntimeException("TEST_EXCEPTION"));
 
         assertDoesNotThrow(() -> transformer.init(initInput));
     }

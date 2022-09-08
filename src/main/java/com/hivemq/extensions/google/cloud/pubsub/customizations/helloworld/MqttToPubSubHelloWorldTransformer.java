@@ -71,7 +71,7 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
                     pubSubConnection.getId(),
                     pubSubConnection.getProjectId());
         } catch (final Exception e) {
-            LOG.error("MQTT to Google Cloud PubSub transformer initialisation failed: ", e);
+            LOG.error("MQTT to Google Cloud Pub/Sub transformer initialisation failed: ", e);
         }
     }
 
@@ -104,12 +104,12 @@ public class MqttToPubSubHelloWorldTransformer implements MqttToPubSubTransforme
                     publishPacket.getPayload().ifPresent(builder::data);
                     outboundPubSubMessages.add(builder.build());
                 } catch (final Exception e) {
-                    LOG.error("Could not create a Google Cloud PubSub message from MQTT message with topic '{}' because", mqttTopic, e);
+                    LOG.error("Could not create a Google Cloud Pub/Sub message from MQTT message with topic '{}' because", mqttTopic, e);
                 }
             }
             mqttToPubSubOutput.setOutboundPubSubMessages(outboundPubSubMessages);
         } catch (final Exception e) {
-            LOG.error("MQTT to Google Cloud PubSub transformation failed: ", e);
+            LOG.error("MQTT to Google Cloud Pub/Sub transformation failed: ", e);
         }
     }
 }

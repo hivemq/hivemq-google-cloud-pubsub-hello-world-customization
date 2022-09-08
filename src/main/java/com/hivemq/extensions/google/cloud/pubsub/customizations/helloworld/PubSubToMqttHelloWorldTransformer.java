@@ -77,7 +77,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
                     pubSubConnection.getId(),
                     pubSubConnection.getProjectId());
         } catch (final Exception e) {
-            LOG.error("Google Cloud PubSub to MQTT transformer initialisation failed: ", e);
+            LOG.error("Google Cloud Pub/Sub to MQTT transformer initialisation failed: ", e);
         }
     }
 
@@ -110,7 +110,7 @@ public class PubSubToMqttHelloWorldTransformer implements PubSubToMqttTransforme
             pubSubToMqttOutput.setPublishes(List.of(publishBuilder.build()));
 
         } catch (final Exception e) {
-            LOG.error("Google Cloud PubSub to MQTT transformation failed: ", e);
+            LOG.error("Google Cloud Pub/Sub to MQTT transformation failed: ", e);
         }
     }
 }
