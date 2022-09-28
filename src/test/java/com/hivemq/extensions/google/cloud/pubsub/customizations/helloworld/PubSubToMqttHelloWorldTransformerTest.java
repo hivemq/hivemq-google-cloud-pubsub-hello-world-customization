@@ -187,7 +187,6 @@ class PubSubToMqttHelloWorldTransformerTest {
         final List<Publish> publishes = publishAtomicReference.get();
         assertNotNull(publishes);
         assertEquals(1, publishes.size());
-        assertTrue(publishes.get(0).getPayload().isPresent());
         assertEquals(1, metricRegistry.counter(MISSING_DATA_COUNTER_NAME).getCount());
     }
 }
