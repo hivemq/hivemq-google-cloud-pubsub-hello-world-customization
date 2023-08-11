@@ -1,7 +1,7 @@
 plugins {
     java
-    id("io.github.sgtsilvio.gradle.defaults")
-    id("com.github.hierynomus.license")
+    alias(libs.plugins.defaults)
+    alias(libs.plugins.license)
 }
 
 group = "com.hivemq.extensions.google.cloud.pubsub.customizations"
@@ -18,16 +18,13 @@ repositories {
 }
 
 dependencies {
-    implementation("com.hivemq:hivemq-google-cloud-pubsub-extension-customization-sdk:${property("hivemq-google-cloud-pubsub-sdk.version")}")
-    implementation("com.hivemq:hivemq-extension-sdk:${version}")
+    implementation(libs.hivemq.googleCloudPubSubExtension.customizationSdk)
 }
 
 dependencies {
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${property("junit-jupiter.version")}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testImplementation("org.mockito:mockito-core:${property("mockito.version")}")
-    testRuntimeOnly("org.slf4j:slf4j-simple:${property("slf4j-simple.version")}")
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.mockito)
+    testRuntimeOnly(libs.slf4j.simple)
 }
 
 tasks.withType<Test>().configureEach {
