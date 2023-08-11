@@ -6,7 +6,3 @@ pluginManagement {
         id("com.github.hierynomus.license") version "${extra["plugin.license.version"]}"
     }
 }
-
-if (file("../hivemq-google-cloud-pubsub-extension-customization-sdk").exists()) {
-    includeBuild("../hivemq-google-cloud-pubsub-extension-customization-sdk")
-}
