@@ -25,7 +25,7 @@ every Pub/Sub attribute as MQTT user properties.
 
 . Clone this repository into a Java 11 Gradle project.
 . Run the `./gradlew jar` task from Gradle to build the customization.
-. Move the `build/libs/hivemq-google-cloud-pubsub-hello-world-customization-4.22.0.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension/customizations` directory.
+. Move the `build/libs/hivemq-google-cloud-pubsub-hello-world-customization-4.23.0.jar` file to the  `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension/customizations` directory.
 . Copy the `src/main/resources/google-cloud-pubsub-configuration.xml` file to the `HIVEMQ_HOME/extensions/hivemq-google-cloud-pubsub-extension` folder.
 . Adapt the configuration to your environment.
     - Set the `<google-cloud-project-id>` in the `<pubsub-connection>` tag to match your Google Cloud Pub/Sub project ID.
