@@ -2,7 +2,7 @@
 hivemq-platform = "4.20.0"
 junit-jupiter = "5.10.2"
 mockito = "5.24.0"
-slf4j = "2.0.19"
+slf4j = "2.0.20"
 
 [libraries]
 hivemq-googleCloudPubSubExtension-customizationSdk = { module = "com.hivemq:hivemq-google-cloud-pubsub-extension-customization-sdk", version.ref = "hivemq-platform" }
